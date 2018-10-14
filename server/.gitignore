@@ -1,0 +1,9 @@
+# dependencies
+/node_modules
+
+# production
+/build
+
+# config
+# src/config/config_db.js
+# src/config/config_keys.js
