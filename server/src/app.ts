@@ -1,4 +1,6 @@
 import express from 'express';
+// Routes
+import homeRoute from './routes/route_home';
 
 class App {
   public express;
@@ -8,16 +10,9 @@ class App {
     this.mountRoutes();
   }
 
+  // Mount Routes
   private mountRoutes (): void {
-    const router = express.Router();
-
-    router.get('/', (req, res) => {
-      res.json({
-        message: 'Hello World'
-      })
-    })
-
-    this.express.use('/', router);
+    this.express.use(homeRoute);
   }
 }
 

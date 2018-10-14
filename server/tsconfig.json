@@ -20,6 +20,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
+  "include": [ "src", "typings" ],
   "exclude": [
     "node_modules",
     "build",
