@@ -1,14 +1,20 @@
 import reset from 'styled-reset';
-import { injectGlobal } from './typed-components';
+import { createGlobalStyle } from './typed-components';
 
 // tslint:disable-next-line
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Maven+Pro');
   ${reset}
   * {
     box-sizing: border-box;
   }
+  html,body {
+    padding: 0;
+    margin: 0;
+  }
   body {
+    height: 100%;
+    overflow: hidden;
     font-family:-apple-system, system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   a {
@@ -24,3 +30,5 @@ injectGlobal`
     font-family:'Maven Pro', sans-serif;
   }
 `;
+
+export default GlobalStyle;

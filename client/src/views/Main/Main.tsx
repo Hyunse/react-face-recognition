@@ -1,16 +1,35 @@
 // tslint:disable:no-console
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import 'tracking';
 import 'tracking/build/data/face';
+import styled from '../../typed-components';
 
 // S - Styled Component
 const Container = styled.div`
-  background-color: #000000;
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    max-width: 600px;
+    height: 812px;
+    background-color: #0984e3;
+  }
 `;
 
 const Video = styled.video`
   position: relative;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 812px;
+    max-width: 600px;
+    overflow: hidden;
+  }
 `;
 
 const Canvas = styled.canvas`
@@ -18,9 +37,20 @@ const Canvas = styled.canvas`
   top: 0;
   left: 0;
   z-index: 1;
+  object-fit: cover;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 812px;
+    max-width: 600px;
+    overflow: hidden;
+  }
 `;
 
 const Button = styled.button`
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
   color: #ffffff;
   font-size: 1em;
   margin: 1em;
@@ -28,17 +58,27 @@ const Button = styled.button`
   border: 2px solid #ffffff;
   border-radius: 3px;
   cursor: pointer;
-  background-color: ${(props) => {
+  z-index: 3;
+  ${(props) => {
     const { name } = props;
+    let style;
     switch (name) {
       case 'start':
-        return '#4CAF50';
+        style = `
+          left: 35%;
+          background: #4CAF50;
+        `;
+        return style;
         break;
       case 'stop':
-        return '#f44336';
+        style = `
+          left: 65%;
+          background: #f44336;
+        `;
+        return style;
         break;
       default:
-        return '#555555';
+        return 'background: #555555;';
         break;
     }
   }};
@@ -56,24 +96,27 @@ class Main extends Component {
   }
 
   public handleClick({ currentTarget: { name } }) {
-    const cameraOuput = this.cameraOutput;
+    const cameraOutput = this.cameraOutput;
 
     switch (name) {
       case 'start':
         this.tracker = new (window as any).tracking.ObjectTracker('face');
-        this.tracker.setInitialScale(4);
-        this.tracker.setStepSize(2);
-        this.tracker.setEdgesDensity(0.1);
-
-        (window as any).tracking.track(cameraOuput, this.tracker, {
+        // this.tracker.setInitialScale(4);
+        // this.tracker.setStepSize(2);
+        // this.tracker.setEdgesDensity(0.1);
+        
+        (window as any).tracking.track(cameraOutput, this.tracker, {
           camera: true
         });
+
         this.tracker.on('track', (event) => {
           const canvas: any = this.canvas;
           const context = canvas.getContext('2d');
           context.clearRect(0, 0, canvas.width, canvas.height);
 
+          console.log(context);
           event.data.forEach((rect) => {
+            console.log(rect);
             context.strokeStyle = '#a64ceb';
             context.strokeRect(rect.x, rect.y, rect.width, rect.height);
             context.font = '11px Helvetica';
@@ -93,7 +136,7 @@ class Main extends Component {
         break;
       case 'stop':
         this.tracker.removeAllListeners();
-        this.cameraOutput.pause();
+        // tackerTask.stop();
         break;
       default:
         break;
@@ -105,12 +148,10 @@ class Main extends Component {
       <Container>
         <Video
           ref={(ref) => (this.cameraOutput = ref)}
-          width="640"
-          height="480"
           autoPlay={true}
           loop={true}
         />
-        <Canvas ref={(ref) => (this.canvas = ref)} width="640" height="480" />
+        <Canvas ref={(ref) => (this.canvas = ref)} width="375" height="812" />
         <Button name="start" onClick={this.handleClick}>
           Start
         </Button>
