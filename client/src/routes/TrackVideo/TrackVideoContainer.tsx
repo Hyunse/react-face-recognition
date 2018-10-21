@@ -10,25 +10,29 @@ class TrackVideo extends Component {
 
   constructor(props) {
     super(props);
+    this.cameraOutput = React.createRef();
+    this.canvas = React.createRef();
     this.handleClick = this.handleClick.bind(this);
   }
 
   public handleClick({ currentTarget: { name } }) {
-    const cameraOutput = this.cameraOutput;
+    const cameraOutput = this.cameraOutput.current;
+    // tslint:disable-next-line
+    console.log('Camera', cameraOutput);
 
     switch (name) {
       case 'start':
         this.tracker = new (window as any).tracking.ObjectTracker('face');
-        // this.tracker.setInitialScale(4);
-        // this.tracker.setStepSize(2);
-        // this.tracker.setEdgesDensity(0.1);
+        this.tracker.setInitialScale(4);
+        this.tracker.setStepSize(2);
+        this.tracker.setEdgesDensity(0.1);
 
         (window as any).tracking.track(cameraOutput, this.tracker, {
           camera: true
         });
 
         this.tracker.on('track', (event) => {
-          const canvas: any = this.canvas;
+          const canvas: any = this.canvas.current;
           const context = canvas.getContext('2d');
           context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -60,7 +64,13 @@ class TrackVideo extends Component {
   }
 
   public render() {
-    return <TrackVideoPresenter handleClick={this.handleClick} />;
+    return (
+      <TrackVideoPresenter
+        handleClick={this.handleClick}
+        cameraOutput={this.cameraOutput}
+        canvas={this.canvas}
+      />
+    );
   }
 }
 

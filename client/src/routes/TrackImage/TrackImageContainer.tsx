@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TrackImagePresenter from './TrackImagePresenter';
 
 class TrackImageContainer extends Component {
-  render() {
+  public render() {
     return (
       <TrackImagePresenter />
     );

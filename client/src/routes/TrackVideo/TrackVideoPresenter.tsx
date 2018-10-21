@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import styled from '../../typed-components';
 
 // S - Styled Component
@@ -84,16 +83,20 @@ const Button = styled.button`
 // E - Styled Component
 
 // Props Interface
-interface IProps extends RouteComponentProps<any> {}
+interface IProps {
+  handleClick;
+  cameraOutput;
+  canvas;
+}
 
-const TrackVideoPresenter: React.SFC<IProps> = ({ handleClick }) => (
+const TrackVideoPresenter: React.SFC<IProps> = ({
+  handleClick,
+  cameraOutput,
+  canvas
+}) => (
   <Container>
-    <Video
-      ref={(ref) => (this.cameraOutput = ref)}
-      autoPlay={true}
-      loop={true}
-    />
-    <Canvas ref={(ref) => (this.canvas = ref)} width="375" height="812" />
+    <Video ref={cameraOutput} autoPlay={true} loop={true} />
+    <Canvas ref={canvas} width="375" height="812" />
     <Button name="start" onClick={handleClick}>
       Start
     </Button>
