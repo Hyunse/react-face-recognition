@@ -15,10 +15,11 @@ class TrackVideo extends Component<IProps> {
     super(props);
     this.cameraOutput = React.createRef();
     this.canvas = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
   }
   
-  public handleClick({ currentTarget: { name } }) {
+  public handleClick: React.MouseEventHandler<HTMLButtonElement> = ({
+    currentTarget: { name }
+  }) => {
     const cameraOutput = this.cameraOutput.current;
 
     switch (name) {
@@ -62,7 +63,7 @@ class TrackVideo extends Component<IProps> {
       default:
         break;
     }
-  }
+  };
 
   public render() {
     return (
