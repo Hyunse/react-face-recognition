@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Card from '../../components/Card';
+import Head from '../../components/Head';
 import styled from '../../typed-components';
 
 // S - Styled Component
@@ -10,16 +12,11 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const Header = styled.header`
-  padding-top: 100px;
-  padding-bottom: 30px;
-`;
-
-const Title = styled.h1`
-  font-size: 65px;
-  font-weight: 700;
-  line-height: 1.2em;
-  text-align: center;
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `;
 // E - Styled Component
 
@@ -27,9 +24,11 @@ class MainPresenter extends Component {
   public render() {
     return (
       <Container>
-        <Header>
-          <Title>Main Page</Title>
-        </Header>
+        <Head title="Main" />
+        <CardContainer>
+          <Card title="Tracking Video" desc="using tarcking js" />
+          <Card title="Tracking Image" desc="using tracking js" />
+        </CardContainer>
       </Container>
     );
   }

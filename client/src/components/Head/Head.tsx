@@ -1,15 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from '../../typed-components';
 
 // S - Styled Component
-const Container = styled.div`
-  position: relative;
-  width: 80%;
-  height: 100%;
-  max-width: 1135px;
-  margin: auto;
-`;
-
 const Header = styled.header`
   padding-top: 100px;
   padding-bottom: 30px;
@@ -23,20 +15,10 @@ const Title = styled.h1`
 `;
 // E - Styled Component
 
-class Head extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  public render() {
-    return (
-      <Container>
-        <Header>
-          <Title>Main Page</Title>
-        </Header>
-      </Container>
-    );
-  }
-}
+const Head = ({ title }) => (
+    <Header>
+      <Title>{title}</Title>
+    </Header>
+);
 
 export default Head;
