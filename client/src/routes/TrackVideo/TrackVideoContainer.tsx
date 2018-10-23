@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import 'tracking';
 import 'tracking/build/data/face';
 import TrackVideoPresenter from './TrackVideoPresenter';
 
-class TrackVideo extends Component {
-  private tracker: any = null;
-  private cameraOutput: any;
-  private canvas: any;
+interface IProps extends RouteComponentProps<any> {}
 
-  constructor(props) {
+class TrackVideo extends Component<IProps> {
+  private tracker: any = null;
+  private cameraOutput: React.RefObject<HTMLInputElement>;
+  private canvas: React.RefObject<HTMLInputElement>;
+
+  constructor(props: IProps) {
     super(props);
     this.cameraOutput = React.createRef();
     this.canvas = React.createRef();
     this.handleClick = this.handleClick.bind(this);
   }
-
+  
   public handleClick({ currentTarget: { name } }) {
     const cameraOutput = this.cameraOutput.current;
-    // tslint:disable-next-line
-    console.log('Camera', cameraOutput);
 
     switch (name) {
       case 'start':

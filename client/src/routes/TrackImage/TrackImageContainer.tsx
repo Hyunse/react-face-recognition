@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import TrackImagePresenter from './TrackImagePresenter';
 
-class TrackImageContainer extends Component {
+interface IProps extends RouteComponentProps<any> {}
+
+class TrackImageContainer extends Component<IProps> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
   public render() {
     return (
       <TrackImagePresenter />

@@ -1,13 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TrackImage extends Component {
-  public render() {
-    return (
-      <React.Fragment>
-        TrackImage
-      </React.Fragment>
-    )
-  }
-}
+const TrackImage: React.SFC = () => <React.Fragment>TrackImage</React.Fragment>;
 
 export default TrackImage;

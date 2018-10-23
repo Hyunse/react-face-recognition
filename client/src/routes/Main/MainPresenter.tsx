@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '../../components/Card';
 import Head from '../../components/Head';
 import styled from '../../typed-components';
@@ -20,18 +20,13 @@ const CardContainer = styled.div`
 `;
 // E - Styled Component
 
-class MainPresenter extends Component {
-  public render() {
-    return (
-      <Container>
-        <Head title="Main" />
-        <CardContainer>
-          <Card title="Tracking Video" desc="using tarcking js" />
-          <Card title="Tracking Image" desc="using tracking js" />
-        </CardContainer>
-      </Container>
-    );
-  }
-}
-
+const MainPresenter: React.SFC = () => (
+  <Container>
+    <Head title="Main" />
+    <CardContainer>
+      <Card to="track-video" title="Tracking Video" desc="using tarcking js" />
+      <Card to="track-image" title="Tracking Image" desc="using tracking js" />
+    </CardContainer>
+  </Container>
+);
 export default MainPresenter;

@@ -82,11 +82,11 @@ const Button = styled.button`
 `;
 // E - Styled Component
 
-// Props Interface
+// Interface Props
 interface IProps {
   handleClick;
-  cameraOutput;
-  canvas;
+  cameraOutput: React.RefObject<HTMLInputElement>;
+  canvas: React.RefObject<HTMLInputElement>;
 }
 
 const TrackVideoPresenter: React.SFC<IProps> = ({
