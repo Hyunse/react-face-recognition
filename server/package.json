@@ -16,6 +16,21 @@
     "dev": "cd src && nodemon --exec ts-node index.ts"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "@types/cors": "^2.8.4",
+    "@types/dotenv": "^4.0.3",
+    "@types/helmet": "^0.0.42",
+    "@types/jsonwebtoken": "^7.2.8",
+    "@types/morgan": "^1.7.35",
+    "@types/pg": "^7.4.11",
+    "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "helmet": "^3.14.0",
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.5.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.41.0",
+    "sequelize-cli": "^5.2.0"
   }
 }
