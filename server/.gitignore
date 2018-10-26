@@ -4,6 +4,7 @@
 # production
 /build
 
+# env
+.env
+
 # config
-# src/config/config_db.js
-# src/config/config_keys.js

@@ -28,9 +28,6 @@
     "helmet": "^3.14.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.1",
-    "pg": "^7.5.0",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.41.0",
-    "sequelize-cli": "^5.2.0"
+    "pg-promise": "^8.5.1"
   }
 }
