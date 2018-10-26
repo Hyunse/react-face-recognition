@@ -4,30 +4,22 @@ import pg from 'pg-promise';
 class DBUtils {
   private static pgp;
 
-  private static getConnection() {
-    this.pgp = pg();
-  }
-
-  private static end() {
-    this.pgp.end();
-  }
-
   static async connect() {
-    const connectionString = `postgres://${DBConfig.dev.user}:${
-      DBConfig.dev.password
-    }@${DBConfig.dev.server}:${DBConfig.dev.port}/${DBConfig.dev.name}`;
-
     try {
-      this.getConnection();
+      // Start Transaction
+      this.pgp = pg();
 
-      const db = this.pgp(connectionString);
-      const data = await db.any('select * from tests');
+      // Connect DB & Get Data
+      const db = this.pgp(DBConfig.dev);
+      const data = await db.any('select * from testsa');
 
-      this.end();
-
+      // Return
       return data;
     } catch (error) {
       return error;
+    } finally {
+      // End Connection
+      this.pgp.end();
     }
   }
 }
