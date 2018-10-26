@@ -15,10 +15,14 @@ const Title = styled.h1`
 `;
 // E - Styled Component
 
-const Head = ({ title }) => (
-    <Container>
-      <Title>{title}</Title>
-    </Container>
+interface IProps {
+  title: string;
+}
+
+const Head: React.SFC<IProps> = ({ title }) => (
+  <Container>
+    <Title>{title}</Title>
+  </Container>
 );
 
 export default Head;

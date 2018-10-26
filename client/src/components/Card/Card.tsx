@@ -32,7 +32,13 @@ const Desc = styled.div`
 `;
 // E - Styled Component
 
-const Card = ({ to, title, desc}) => (
+interface IProps {
+  to: string;
+  title: string;
+  desc: string;
+}
+
+const Card: React.SFC<IProps> = ({ to, title, desc }) => (
   <Link to={`/${to}`}>
     <Container>
       <Title>{title}</Title>
