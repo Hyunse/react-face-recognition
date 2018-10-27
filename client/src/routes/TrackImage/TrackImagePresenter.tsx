@@ -6,7 +6,6 @@ import styled from '../../typed-components';
 const Container = styled.div`
   position: relative;
   box-sizing: border-box;
-  height: 500px;
   overflow: hidden;
 
   @media (max-width: 600px) {
@@ -17,10 +16,20 @@ const Container = styled.div`
   }
 `;
 
-const TrackImage: React.SFC = () => (
-  <Container>
-    <Image src="friends" />
-  </Container>
-);
+interface IProps {
+  image: React.RefObject<HTMLImageElement>;
+  container: React.RefObject<HTMLDivElement>;
+  rect: any;
+}
 
-export default TrackImage;
+const TrackImagePresenter: React.SFC<IProps> = ({ image, container, rect }) => {
+  
+  return (
+    <Container ref={container}>
+      <Image refs={image} src="friends" name="trackingImg" />
+      {rect}
+    </Container>
+  );
+};
+
+export default TrackImagePresenter;
