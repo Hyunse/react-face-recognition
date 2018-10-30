@@ -9,34 +9,39 @@ interface IProps extends RouteComponentProps<any> {}
 class TrackImageContainer extends Component<IProps> {
   private tracker: any = null;
   private image: React.RefObject<HTMLImageElement>;
-  private rect: any;
+  private canvasElements: any;
 
   constructor(props: IProps) {
     super(props);
     this.state = {
-      rect: ''
+      canvasElements: ''
     };
 
     this.image = React.createRef();
     this.handleImageLoaded.bind(this);
   }
 
-  public handleImageLoaded: React.ReactEventHandler<HTMLImageElement> = () => {
+  public componentDidMount() {
+    this.plot();
+  }
+  public handleImageLoaded: React.ReactEventHandler = () => {
     this.tracker = new (window as any).tracking.ObjectTracker('face');
     this.tracker.setStepSize(1.7);
 
     const img = this.image.current;
 
     (window as any).tracking.track(img, this.tracker);
-    this.tracker.on('track', (event) => {
-      event.data.forEach((rect) => {
-        (window as any).plot(rect.x, rect.y, rect.width, rect.height);
-      });
-    });
+
+    this.trackFaceImage();
+  };
+
+  public plot = () => {
+    const img = this.image.current;
 
     (window as any).plot = (x, y, w, h) => {
       const rect = React.createElement('div', {
         className: 'rect',
+        key: x,
         style: {
           border: '2px solid #a64ceb',
           height: `${h}px`,
@@ -46,16 +51,30 @@ class TrackImageContainer extends Component<IProps> {
           width: `${w}px`
         }
       });
-      this.rect = rect;
-      this.setState({ 'rect': rect });
+      return rect;
     };
+
+  };
+
+  public trackFaceImage = () => {
+    this.tracker.on('track', (event) => {
+      const rectArray: HTMLDivElement[] = [];
+
+      event.data.forEach((rect) => {
+        const rectDiv: HTMLDivElement = (window as any).plot(rect.x, rect.y, rect.width, rect.height);
+        rectArray.push(rectDiv);
+      });
+
+      this.canvasElements = rectArray;
+      this.setState({ 'canvasElements': rectArray });
+    });
   };
 
   public render() {
     return (
       <TrackImagePresenter
         image={this.image}
-        rect={this.rect}
+        canvasElements={this.canvasElements}
         afterLoadingImg={this.handleImageLoaded}
       />
     );

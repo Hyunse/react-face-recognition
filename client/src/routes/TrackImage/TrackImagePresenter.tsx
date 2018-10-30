@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from '../../components/Head';
 import Image from '../../components/Image';
 import styled from '../../typed-components';
 
@@ -6,7 +7,7 @@ import styled from '../../typed-components';
 const Container = styled.div`
   position: relative;
   box-sizing: border-box;
-  overflow: hidden;
+  margin-bottom: 100px;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -14,29 +15,37 @@ const Container = styled.div`
     height: 812px;
     background-color: #0984e3;
   }
+
+  /* Nested Img */
+  > img {
+    display: block;
+    width: 50%;
+    margin auto;
+  }
 `;
 // E - Styled Component
 
 interface IProps {
   image: React.RefObject<HTMLImageElement>;
-  rect: any;
-  afterLoadingImg: React.ReactEventHandler<HTMLImageElement>;
+  canvasElements: any;
+  afterLoadingImg: React.ReactEventHandler;
 }
 
 const TrackImagePresenter: React.SFC<IProps> = ({
   image,
-  rect,
+  canvasElements,
   afterLoadingImg
 }) => {
   return (
     <Container>
+      <Head title="Tracking Image" />
       <Image
         refs={image}
         src="friends"
         name="trackingImg"
         afterLoadingImg={afterLoadingImg}
       />
-      {rect}
+      {...canvasElements}
     </Container>
   );
 };

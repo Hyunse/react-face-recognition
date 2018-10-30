@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../components/Button';
+import Head from '../../components/Head';
 import styled from '../../typed-components';
 
 // S - Styled Component
@@ -59,6 +60,7 @@ const TrackVideoPresenter: React.SFC<IProps> = ({
   canvas
 }) => (
   <Container>
+    <Head title="Tracking Image" />
     <Video ref={cameraOutput} autoPlay={true} loop={true} />
     <Canvas ref={canvas} width="375" height="812" />
     <Button name="start" onClick={handleClick}>
