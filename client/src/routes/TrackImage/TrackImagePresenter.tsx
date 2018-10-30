@@ -15,18 +15,27 @@ const Container = styled.div`
     background-color: #0984e3;
   }
 `;
+// E - Styled Component
 
 interface IProps {
   image: React.RefObject<HTMLImageElement>;
-  container: React.RefObject<HTMLDivElement>;
   rect: any;
+  afterLoadingImg: React.ReactEventHandler<HTMLImageElement>;
 }
 
-const TrackImagePresenter: React.SFC<IProps> = ({ image, container, rect }) => {
-  
+const TrackImagePresenter: React.SFC<IProps> = ({
+  image,
+  rect,
+  afterLoadingImg
+}) => {
   return (
-    <Container ref={container}>
-      <Image refs={image} src="friends" name="trackingImg" />
+    <Container>
+      <Image
+        refs={image}
+        src="friends"
+        name="trackingImg"
+        afterLoadingImg={afterLoadingImg}
+      />
       {rect}
     </Container>
   );

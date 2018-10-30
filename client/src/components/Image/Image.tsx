@@ -13,15 +13,17 @@ interface IProps {
   name: string;
   alt?: string;
   refs: React.RefObject<HTMLImageElement>;
+  afterLoadingImg: React.ReactEventHandler<HTMLImageElement>;
 }
 
-const Image: React.SFC<IProps> = ({ src, name, alt, refs }) => {
+const Image: React.SFC<IProps> = ({ src, name, alt, refs, afterLoadingImg }) => {
   return (
     <Container
       src={require(`../../assets/img/${src}.jpg`)}
       name={name}
       alt={alt}
       ref={refs}
+      onLoad={afterLoadingImg}
     />
   );
 };
