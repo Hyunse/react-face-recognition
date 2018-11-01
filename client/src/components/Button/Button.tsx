@@ -3,9 +3,6 @@ import styled from '../../typed-components';
 
 // S - Styled Component
 const Container = styled.button`
-  position: absolute;
-  bottom: 0;
-  transform: translateX(-50%);
   color: #ffffff;
   font-size: 1em;
   margin: 1em;
@@ -14,10 +11,10 @@ const Container = styled.button`
   border-radius: 3px;
   cursor: pointer;
   z-index: 3;
-  ${(props) => {
-    const { name } = props;
+  /* ${(props) => {
+    const { className } = props;
     let style;
-    switch (name) {
+    switch (className) {
       case 'start':
         style = `
           left: 35%;
@@ -36,7 +33,7 @@ const Container = styled.button`
         return 'background: #555555;';
         break;
     }
-  }};
+  }}; */
 `;
 // E - Styled Component
 
@@ -47,7 +44,7 @@ interface IProps {
 
 const Button: React.SFC<IProps> = ({ name, onClick }) => (
   <Container name={name} onClick={onClick}>
-    Stop
+    {name}
   </Container>
 );
 

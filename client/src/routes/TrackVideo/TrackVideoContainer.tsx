@@ -21,7 +21,7 @@ class TrackVideo extends Component<IProps> {
     currentTarget: { name }
   }) => {
     const cameraOutput = this.cameraOutput.current;
-
+    
     switch (name) {
       case 'start':
         this.tracker = new (window as any).tracking.ObjectTracker('face');

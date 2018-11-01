@@ -19,7 +19,7 @@ const Container = styled.div`
   /* Nested Img */
   > img {
     display: block;
-    width: 50%;
+    width: 40%;
     margin auto;
   }
 `;

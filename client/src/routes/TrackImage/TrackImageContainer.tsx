@@ -59,7 +59,7 @@ class TrackImageContainer extends Component<IProps> {
   public trackFaceImage = () => {
     this.tracker.on('track', (event) => {
       const rectArray: HTMLDivElement[] = [];
-
+      
       event.data.forEach((rect) => {
         const rectDiv: HTMLDivElement = (window as any).plot(rect.x, rect.y, rect.width, rect.height);
         rectArray.push(rectDiv);
