@@ -6,17 +6,27 @@ import styled from '../../typed-components';
 // S - Styled Component
 const Container = styled.div`
   position: relative;
-  width: 80%;
-  height: 100%;
   max-width: 1135px;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
   margin: auto;
 `;
 
 const CardContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  @media (max-width: 640px) {
+    height: 60vh;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 // E - Styled Component
 

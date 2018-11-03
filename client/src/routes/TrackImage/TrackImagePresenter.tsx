@@ -6,21 +6,22 @@ import styled from '../../typed-components';
 // S - Styled Component
 const Container = styled.div`
   position: relative;
+  height: 100%;
   box-sizing: border-box;
   margin-bottom: 100px;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    max-width: 600px;
-    height: 812px;
-    background-color: #0984e3;
-  }
-
-  /* Nested Img */
+  
   > img {
     display: block;
     width: 40%;
     margin auto;
+  }
+
+  @media (max-width: 600px) {
+    min-height: 100vh;
+
+    > img {
+      width: 100%;
+    }
   }
 `;
 // E - Styled Component
