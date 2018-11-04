@@ -18,7 +18,6 @@ const Container = styled.div`
     width: 100%;
     max-width: 600px;
     height: 812px;
-    background-color: #0984e3;
   }
 `;
 
@@ -82,7 +81,7 @@ const TrackVideoPresenter: React.SFC<IProps> = ({
   canvas
 }) => (
   <Container>
-    <Head title="Tracking Image" />
+    <Head title="Tracking Video" />
     <VideoContainer>
       <Video ref={cameraOutput} autoPlay={true} loop={true} />
       <Canvas ref={canvas} width="500" height="500" />

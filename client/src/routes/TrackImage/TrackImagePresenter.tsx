@@ -13,12 +13,12 @@ const Container = styled.div`
   > img {
     display: block;
     width: 40%;
-    margin auto;
+    margin: auto;
   }
 
   @media (max-width: 600px) {
     min-height: 100vh;
-
+    margin-bottom: 0px;
     > img {
       width: 100%;
     }
