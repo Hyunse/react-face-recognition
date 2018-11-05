@@ -16,14 +16,14 @@ class TrackVideo extends Component<IProps> {
     this.cameraOutput = React.createRef();
     this.canvas = React.createRef();
   }
-  
+
   public handleClick: React.MouseEventHandler<HTMLButtonElement> = ({
     currentTarget: { name }
   }) => {
     const cameraOutput = this.cameraOutput.current;
-    
+
     switch (name) {
-      case 'start':
+      case 'face':
         this.tracker = new (window as any).tracking.ObjectTracker('face');
         this.tracker.setInitialScale(4);
         this.tracker.setStepSize(2);
@@ -40,6 +40,40 @@ class TrackVideo extends Component<IProps> {
 
           event.data.forEach((rect) => {
             context.strokeStyle = '#a64ceb';
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+            context.font = '11px Helvetica';
+            context.fillStyle = '#fff';
+            context.fillText(
+              'x: ' + rect.x + 'px',
+              rect.x + rect.width + 5,
+              rect.y + 11
+            );
+            context.fillText(
+              'y: ' + rect.y + 'px',
+              rect.x + rect.width + 5,
+              rect.y + 22
+            );
+          });
+        });
+        break;
+      case 'color':
+        this.tracker = new (window as any).tracking.ColorTracker('magenta');
+
+        (window as any).tracking.track(cameraOutput, this.tracker, {
+          camera: true
+        });
+
+        this.tracker.on('track', (event) => {
+          const canvas: any = this.canvas.current;
+          const context = canvas.getContext('2d');
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          event.data.forEach((rect) => {
+            if (rect.color === 'custom') {
+              rect.color = this.tracker.customColor;
+            }
+            
+            context.strokeStyle = rect.color;
             context.strokeRect(rect.x, rect.y, rect.width, rect.height);
             context.font = '11px Helvetica';
             context.fillStyle = '#fff';

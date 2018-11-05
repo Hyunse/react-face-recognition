@@ -11,29 +11,6 @@ const Container = styled.button`
   border-radius: 3px;
   cursor: pointer;
   z-index: 3;
-  /* ${(props) => {
-    const { className } = props;
-    let style;
-    switch (className) {
-      case 'start':
-        style = `
-          left: 35%;
-          background: #4CAF50;
-        `;
-        return style;
-        break;
-      case 'stop':
-        style = `
-          left: 65%;
-          background: #f44336;
-        `;
-        return style;
-        break;
-      default:
-        return 'background: #555555;';
-        break;
-    }
-  }}; */
 `;
 // E - Styled Component
 

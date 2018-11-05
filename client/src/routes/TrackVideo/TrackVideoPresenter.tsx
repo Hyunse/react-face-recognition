@@ -58,8 +58,12 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
 
-  > button[name="start"] {
+  > button[name="face"] {
     background-color: green;
+  }
+
+  > button[name="color"] {
+    background-color: magenta;
   }
 
   > button[name="stop"] {
@@ -87,7 +91,8 @@ const TrackVideoPresenter: React.SFC<IProps> = ({
       <Canvas ref={canvas} width="500" height="500" />
     </VideoContainer>
     <ButtonContainer>
-      <Button name="start" onClick={handleClick} />
+      <Button name="face" onClick={handleClick} />
+      <Button name="color" onClick={handleClick} />
       <Button name="stop" onClick={handleClick} />
     </ButtonContainer>
   </Container>
