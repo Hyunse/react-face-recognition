@@ -22,16 +22,14 @@ const Container = styled.div`
 `;
 
 const VideoContainer = styled.div`
-  width: 500px;
-  height: 500px;
+  width: 640px;
+  height: 480px;
   object-fit: cover;
   background-color: #dfe6e9;
 `;
 
 const Video = styled.video`
   position: absolute;
-  width: 500px;
-  height: 500px;
   object-fit: cover;
   @media (max-width: 600px) {
     width: 100%;
@@ -87,8 +85,8 @@ const TrackVideoPresenter: React.SFC<IProps> = ({
   <Container>
     <Head title="Tracking Video" />
     <VideoContainer>
-      <Video ref={cameraOutput} autoPlay={true} loop={true} />
-      <Canvas ref={canvas} width="500" height="500" />
+      <Video ref={cameraOutput} autoPlay={true} loop={true} width="640" height="480" />
+      <Canvas ref={canvas} width="640" height="480" />
     </VideoContainer>
     <ButtonContainer>
       <Button name="face" onClick={handleClick} />
