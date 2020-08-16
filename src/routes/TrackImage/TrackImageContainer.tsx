@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import 'tracking';
-import 'tracking/build/data/face';
 import TrackImagePresenter from './TrackImagePresenter';
 
 interface IProps extends RouteComponentProps<any> {}
@@ -26,7 +24,7 @@ class TrackImageContainer extends Component<IProps> {
   }
   public handleImageLoaded: React.ReactEventHandler = () => {
     this.tracker = new (window as any).tracking.ObjectTracker('face');
-    this.tracker.setStepSize(1.7);
+    this.tracker.setStepSize(1);
 
     const img = this.image.current;
 

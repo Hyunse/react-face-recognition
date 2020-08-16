@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import 'tracking';
-import 'tracking/build/data/face';
 import TrackVideoPresenter from './TrackVideoPresenter';
 
 interface IProps extends RouteComponentProps<any> {}
