@@ -32,6 +32,6 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "src/tracking.js"
+    "public/tracking.js"
   ]
 }
