@@ -8,7 +8,7 @@ const Container = styled.header`
 `;
 
 const Title = styled.h1`
-  font-size: 65px;
+  font-size: 7vw;
   font-weight: 700;
   line-height: 1.2em;
   text-align: center;

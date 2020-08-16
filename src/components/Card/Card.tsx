@@ -4,8 +4,9 @@ import styled from '../../typed-components';
 
 // S - Styled Component
 const Container = styled.div`
-  max-width: 400px;
-  min-width: 300px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
   height: 100%;
   padding: 50px 30px 50px 30px;
   overflow: hidden;
@@ -17,18 +18,19 @@ const Container = styled.div`
   &:hover {
     background: #555;
   }
+  
 `;
 
 const Title = styled.h3`
   max-width: 400px;
-  margin-bottom: 50px;
   font-size: 30px;
   font-weight: 500;
   text-align: center;
 `;
 
-const Desc = styled.div`
-  max-width: 400px;
+const StyledLink = styled(Link)`
+  max-width: 50%;
+  margin-top: 20px;
 `;
 // E - Styled Component
 
@@ -39,12 +41,11 @@ interface IProps {
 }
 
 const Card: React.SFC<IProps> = ({ to, title, desc }) => (
-  <Link to={`/${to}`}>
+  <StyledLink to={`/${to}`}>
     <Container>
       <Title>{title}</Title>
-      <Desc>{desc}</Desc>
     </Container>
-  </Link>
+  </StyledLink>
 );
 
 export default Card;

@@ -19,20 +19,18 @@ const CardContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 
-  @media (max-width: 640px) {
-    height: 60vh;
+  @media (max-width: 760px) {
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
   }
 `;
 // E - Styled Component
 
 const MainPresenter: React.SFC = () => (
   <Container>
-    <Head title="Main" />
+    <Head title="Face Recognition" />
     <CardContainer>
       <Card to="track-video" title="Tracking Video" desc="using tarcking js" />
       <Card to="track-image" title="Tracking Image" desc="using tracking js" />
