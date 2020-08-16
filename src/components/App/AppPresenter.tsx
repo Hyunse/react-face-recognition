@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch  } from 'react-router-dom';
+import { HashRouter , Route, Switch  } from 'react-router-dom';
 import GlobalStyle from '../../global-styles';
 import Main from '../../routes/Main';
 import TrackImage from '../../routes/TrackImage';
 import TrackVideo from '../../routes/TrackVideo';
 
 const AppPresenter: React.SFC = () => (
-  <BrowserRouter>
+  <HashRouter basename="/">
     <React.Fragment>
       <GlobalStyle />
       <Switch>
@@ -15,7 +15,7 @@ const AppPresenter: React.SFC = () => (
         <Route path={"/track-image"} component={TrackImage} />
       </Switch>
     </React.Fragment>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default AppPresenter;

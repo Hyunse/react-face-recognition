@@ -2,6 +2,8 @@
 
 React-Face-Recognition is a react application that can detect face through a user's camera or images using [Tracking.js](https://trackingjs.com/)
 
+This project is **deployed** at: https://hyunse.github.io/react-face-recognition
+
 **Technologies Used**
 
 - React
