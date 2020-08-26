@@ -4,18 +4,26 @@ import TrackImagePresenter from './TrackImagePresenter';
 
 interface IProps extends RouteComponentProps<any> {}
 
-class TrackImageContainer extends Component<IProps> {
+interface IState {
+  canvasElements?: HTMLDivElement[];
+  url: string;
+}
+
+class TrackImageContainer extends Component<IProps, IState> {
   private tracker: any = null;
   private image: React.RefObject<HTMLImageElement>;
+  private imageInputRef: React.RefObject<HTMLInputElement>;
   private canvasElements: any;
 
   constructor(props: IProps) {
     super(props);
     this.state = {
-      canvasElements: ''
+      canvasElements: [],
+      url: require(`../../assets/img/friends.jpg`),
     };
 
     this.image = React.createRef();
+    this.imageInputRef = React.createRef();
     this.handleImageLoaded.bind(this);
   }
 
@@ -46,26 +54,41 @@ class TrackImageContainer extends Component<IProps> {
           left: `${(img as any).offsetLeft + x}px`,
           position: 'absolute',
           top: `${(img as any).offsetTop + y}px`,
-          width: `${w}px`
-        }
+          width: `${w}px`,
+        },
       });
       return rect;
     };
-
   };
 
   public trackFaceImage = () => {
     this.tracker.on('track', (event) => {
       const rectArray: HTMLDivElement[] = [];
-      
+
       event.data.forEach((rect) => {
-        const rectDiv: HTMLDivElement = (window as any).plot(rect.x, rect.y, rect.width, rect.height);
+        const rectDiv: HTMLDivElement = (window as any).plot(
+          rect.x,
+          rect.y,
+          rect.width,
+          rect.height
+        );
         rectArray.push(rectDiv);
       });
 
       this.canvasElements = rectArray;
-      this.setState({ 'canvasElements': rectArray });
+      this.setState({ canvasElements: rectArray });
     });
+  };
+
+  public uploadImg = () => {
+    const imageInput = this.imageInputRef.current;
+
+    if (imageInput && imageInput.value) {
+      // tslint:disable-next-line:no-console
+      console.log(imageInput.value);
+      this.setState({ url: imageInput.value });
+    }
+    this.trackFaceImage();
   };
 
   public render() {
@@ -74,6 +97,9 @@ class TrackImageContainer extends Component<IProps> {
         image={this.image}
         canvasElements={this.canvasElements}
         afterLoadingImg={this.handleImageLoaded}
+        uploadImg={this.uploadImg}
+        imageInputRef={this.imageInputRef}
+        url={this.state.url}
       />
     );
   }

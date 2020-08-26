@@ -14,9 +14,12 @@ const Container = styled.div`
   border: 1px solid #000000;
   box-shadow: 5px 5px 10px #cccccc;
   cursor: pointer;
+  
 
   &:hover {
-    background: #555;
+    color: white;
+    background-color: #7200da;
+;
   }
   
 `;
@@ -24,7 +27,7 @@ const Container = styled.div`
 const Title = styled.h3`
   max-width: 400px;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
 `;
 

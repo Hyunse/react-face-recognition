@@ -17,7 +17,7 @@ interface IProps {
 const Image: React.SFC<IProps> = ({ src, name, alt, refs, afterLoadingImg }) => {
   return (
     <Container
-      src={require(`../../assets/img/${src}.jpg`)}
+      src={src}
       name={name}
       alt={alt}
       ref={refs}

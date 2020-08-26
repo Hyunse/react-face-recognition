@@ -32,6 +32,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "public/tracking.js"
+    "public/tracking.js",
+    "public/face-min.js"
   ]
 }

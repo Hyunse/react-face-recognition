@@ -3,12 +3,12 @@ import styled from '../../typed-components';
 
 // S - Styled Component
 const Container = styled.header`
-  padding-top: 100px;
+  padding-top: 20px;
   padding-bottom: 30px;
 `;
 
 const Title = styled.h1`
-  font-size: 7vw;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1.2em;
   text-align: center;

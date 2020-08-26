@@ -2,18 +2,22 @@
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "linterOptions": {
     "rules": {
+      "no-console": false,
       "ordered-imports": false,
       "no-empty-interface": false,
       "object-literal-sort-keys": false,
-      "no-console": false,
       "no-string-literal": false,
       "strictNullChecks": false
+    },
+    "jsRules": {
+      "no-console": false 
     },
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
       "coverage/lcov-report/*.js",
-      "public/tracking.js"
+      "public/tracking.js",
+      "public/face-min.js"
     ]
   }
 }
