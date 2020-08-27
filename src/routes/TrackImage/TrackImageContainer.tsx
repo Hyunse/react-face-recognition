@@ -84,8 +84,6 @@ class TrackImageContainer extends Component<IProps, IState> {
     const imageInput = this.imageInputRef.current;
 
     if (imageInput && imageInput.value) {
-      // tslint:disable-next-line:no-console
-      console.log(imageInput.value);
       this.setState({ url: imageInput.value });
     }
     this.trackFaceImage();

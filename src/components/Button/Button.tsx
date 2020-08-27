@@ -16,12 +16,13 @@ const Container = styled.button`
 
 interface IProps {
   name: string;
+  text: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: React.SFC<IProps> = ({ name, onClick }) => (
+const Button: React.SFC<IProps> = ({ name, text, onClick }) => (
   <Container name={name} onClick={onClick}>
-    {name}
+    {text}
   </Container>
 );
 

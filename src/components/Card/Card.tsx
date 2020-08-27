@@ -12,16 +12,12 @@ const Container = styled.div`
   overflow: hidden;
   border-radius: 10px;
   border: 1px solid #000000;
-  box-shadow: 5px 5px 10px #cccccc;
   cursor: pointer;
-  
 
   &:hover {
     color: white;
-    background-color: #7200da;
-;
+    background-color: #791E94;
   }
-  
 `;
 
 const Title = styled.h3`

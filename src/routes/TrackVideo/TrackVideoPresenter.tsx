@@ -89,9 +89,9 @@ const TrackVideoPresenter: React.SFC<IProps> = ({
       <Canvas ref={canvas} width="640" height="480" />
     </VideoContainer>
     <ButtonContainer>
-      <Button name="face" onClick={handleClick} />
-      <Button name="color" onClick={handleClick} />
-      <Button name="stop" onClick={handleClick} />
+      <Button name="face" text="face" onClick={handleClick} />
+      <Button name="color" text="yellow color" onClick={handleClick} />
+      <Button name="stop" text="stop" onClick={handleClick} />
     </ButtonContainer>
   </Container>
 );

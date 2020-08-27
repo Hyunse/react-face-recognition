@@ -32,5 +32,5 @@ This project is **deployed** at: https://hyunse.github.io/react-face-recognition
 
 ## Todo 🔨🔨🔨
 
-- [ ] Add image to the detected face.
+- [x] Add image to the detected face.
 - [x] Upload image

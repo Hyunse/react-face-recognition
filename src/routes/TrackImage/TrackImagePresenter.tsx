@@ -36,7 +36,7 @@ const ImgInput = styled.input`
 `;
 
 const ImgButton = styled.button`
-  background-color: #7200da;
+  background-color: #791E94;
   border: none;
   color: white;
   padding: 15px 32px;
